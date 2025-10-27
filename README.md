@@ -16,9 +16,9 @@
   * **Messages / Events:**  
     Domain events such as PoseEvent, DetectObjectsEvent, TrackedObjectsEvent, TickBroadcast, and others.  
   * **Objects:**  
-    Core SLAM data models — Camera, LiDarDataBase, FusionSlam, Pose, LandMark, DetectedObject, and related containers.  
+    Core SLAM data models - Camera, LiDarDataBase, FusionSlam, Pose, LandMark, DetectedObject, and related containers.  
   * **Services:**  
-    Microservices that execute SLAM tasks — CameraService, LiDarService, PoseService, FusionSlamService, and TimeService.
+    Microservices that execute SLAM tasks - CameraService, LiDarService, PoseService, FusionSlamService, and TimeService.
 
 * **Testing (`src/test/java`)**
   * **Purpose:**  
