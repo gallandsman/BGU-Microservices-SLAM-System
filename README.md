@@ -13,12 +13,13 @@ MessageBus, MessageBusImpl, Event, Broadcast, Future, Callback, Message, MicroSe
 Core infrastructure handling message passing, subscription management, and asynchronous event delivery between microservices.
 
 * Application Layer (bgu.spl.mics.application)
-** Messages / Events:
+  
+ ** Messages / Events:
    Domain events such as PoseEvent, DetectObjectsEvent, TrackedObjectsEvent, TickBroadcast, and others.
-** Objects:
+   ** Objects:
    Core SLAM data models — Camera, LiDarDataBase, FusionSlam, Pose, LandMark, DetectedObject, and related containers.
-** Services:
-  Microservices that execute SLAM tasks — CameraService, LiDarService, PoseService, FusionSlamService, and TimeService.
+   ** Services:
+   Microservices that execute SLAM tasks — CameraService, LiDarService, PoseService, FusionSlamService, and TimeService.
 
 * Testing (src/test/java)
 ** Purpose:
