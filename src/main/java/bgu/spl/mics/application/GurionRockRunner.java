@@ -67,9 +67,11 @@ public class GurionRockRunner {
      * @param args Command-line arguments. The first argument is expected to be the path to the configuration file.
      */
     public static void main(String[] args) {
-        // ConfigData data = parseConfig(args[0]);
-        ConfigData data = parseConfig("configuration_file.json");
-        Map<String, List<StampedDetectedObjects>> camerasDetection = parseCamera(data.getCameraDatasPath());
+        ConfigData data = parseConfig(args[0]);
+       //ConfigData data = parseConfig("configuration_file.json");
+        //Map<String, List<StampedDetectedObjects>> camerasDetection = parseCamera(data.getCameraDatasPath());
+        String folder = args[0].substring(0, args[0].lastIndexOf("/") + 1);
+        Map<String, List<StampedDetectedObjects>> camerasDetection = parseCamera(folder + data.getCameraDatasPath());
         int num_of_services = data.getCameras().length + data.getLiDars().length + 2;
         CountDownLatch latch = new CountDownLatch(num_of_services); // Time service will wait for every one to subscribe
 
@@ -86,7 +88,8 @@ public class GurionRockRunner {
 
         //initialize liDarservices and set database for Lidarworkers
         LiDarWorkerTracker[] lidars = data.getLiDars();
-        LiDarDataBase liDarDataBase = LiDarDataBase.getInstance(data.getLidarDatasPath());
+        LiDarDataBase liDarDataBase = LiDarDataBase.getInstance(folder + data.getLidarDatasPath());
+        //LiDarDataBase liDarDataBase = LiDarDataBase.getInstance(data.getLidarDatasPath());
         //System.out.println(liDarDataBase.toString());
         for (LiDarWorkerTracker lidar : lidars) {
             lidar.initializeDataBase(liDarDataBase);
@@ -95,7 +98,8 @@ public class GurionRockRunner {
             microServices.put(lidarService, new Thread(lidarService, lidar.getName()));
         }
         // initialize poseservice and pose data
-        GPSIMU gpsimu = new GPSIMU(parsePose(data.getPoseJsonFile()));
+        //GPSIMU gpsimu = new GPSIMU(parsePose(data.getPoseJsonFile()));
+        GPSIMU gpsimu = new GPSIMU(parsePose(folder + data.getPoseJsonFile()));
         PoseService poseService = new PoseService(gpsimu, latch);
         microServices.put(poseService, new Thread(poseService, "poseService"));
 
@@ -104,7 +108,6 @@ public class GurionRockRunner {
         fusionSlam.setNumOfCamerasAndLiDars(microServices.size()-1); // excludes poseservice
         FusionSlamService fusionSlamService = new FusionSlamService(fusionSlam, latch);
         microServices.put(fusionSlamService, new Thread(fusionSlamService, "fusionSlamService"));
-
 
         // start
         for (MicroService microService : microServices.keySet()) {

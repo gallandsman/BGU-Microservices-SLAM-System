@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+"configurations": [
+    {
+        "type": "java",
+        "name": "Run: Example 1",
+        "request": "launch",
+        "mainClass": "bgu.spl.mics.application.GurionRockRunner",
+        "projectName": "spl225ass2",
+        "args": ["input/example1/configuration_file.json"],
+        "cwd": "${workspaceFolder}"
+    },
+    {
+        "type": "java",
+        "name": "Run: Example 2",
+        "request": "launch",
+        "mainClass": "bgu.spl.mics.application.GurionRockRunner",
+        "projectName": "spl225ass2",
+        "args": ["input/example2/configuration_file.json"],
+        "cwd": "${workspaceFolder}"
+    },
+    {
+        "type": "java",
+        "name": "Run: Example 3",
+        "request": "launch",
+        "mainClass": "bgu.spl.mics.application.GurionRockRunner",
+        "projectName": "spl225ass2",
+        "args": ["input/example3/configuration_file.json"],
+        "cwd": "${workspaceFolder}"
+    }
+]
+}
