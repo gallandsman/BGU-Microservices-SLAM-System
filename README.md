@@ -26,3 +26,19 @@
   * **Tests:**  
     MessageBusImplTest, CameraTest, FusionSlamTest.
 
+ ## 🚀 How to Run
+The system uses configuration files to initialize the simulation.
+1. Open the project in **VS Code**.
+2. Go to **Run and Debug** (Ctrl+Shift+D).
+3. Choose an option from the dropdown:
+   * **Run Example 1:** Standard successful simulation.
+   * **Run Example 2:** Complex environment with more sensors.
+   * **Run Example 3:** **Error Simulation** - simulates sensor/data conflicts to test system robustness.
+4. Press **F5** to start.
+
+## 📂 Input & Output
+* **Input:** Located in `input/`. Each example folder contains specific sensor data (Camera, LiDAR, Pose).
+* **Output:** A file named `output_file.json` is generated in the root directory, containing:
+  * **System Statistics:** Runtime and message counts.
+  * **SLAM Map:** Calculated global positions of all detected Landmarks.
+
